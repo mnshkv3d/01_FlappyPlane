@@ -27,7 +27,7 @@ end
 function love.update(dt)
 	-- player:resolveCollision(ground)
 	player:resolveCollision(obstacle)
-	if not player.isColliding and not gameOver and player.y > 0 and player.y < 480 then
+	if not player.isColliding and not gameOver and player.y > 0 and player.y < 407 then
 		positionBG = (positionBG - speedBG * dt) % bgImage:getWidth()
 		positionGround = (positionGround - speedGround * dt) % groundImage:getWidth()
 		obstacle.x = obstacle.x - speedGround * dt
@@ -39,7 +39,7 @@ function love.update(dt)
 			end
 		end
 		if love.keyboard.isDown("space") and canTap then
-			player.y = player.y - 12500 * dt
+			player.y = player.y - 15000 * dt
 			canTap = false
 		else
 			player.y = player.y + 100 * dt
