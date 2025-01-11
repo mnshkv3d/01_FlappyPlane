@@ -1,2 +1,2 @@
 # 01_FlappyPlane
-Flappy bird implementation in LÖVE
+Flappy bird implementation in Godot 4.3
