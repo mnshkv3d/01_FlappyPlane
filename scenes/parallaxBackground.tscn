@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ro7m5pmn32xt"]
+
+[ext_resource type="Script" path="res://scripts/parallax_background.gd" id="1_gj1ax"]
+[ext_resource type="Texture2D" uid="uid://di36rndng8ocw" path="res://assets/background.png" id="1_knyl1"]
+[ext_resource type="Texture2D" uid="uid://c4ax1qqwwr61k" path="res://assets/groundSnow.png" id="2_fa4dj"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_gj1ax")
+
+[node name="Background" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(800, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+texture_repeat = 2
+position = Vector2(400, 240)
+texture = ExtResource("1_knyl1")
+
+[node name="Ground" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(808, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+position = Vector2(404, 445)
+texture = ExtResource("2_fa4dj")

@@ -1,0 +1,37 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bf63i2v3ehttf"]
+
+[ext_resource type="Texture2D" uid="uid://c2waonano4arv" path="res://assets/planes.png" id="1_0kdkn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p78mt"]
+atlas = ExtResource("1_0kdkn")
+region = Rect2(88, 292, 88, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm4gi"]
+atlas = ExtResource("1_0kdkn")
+region = Rect2(0, 438, 88, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_133vc"]
+atlas = ExtResource("1_0kdkn")
+region = Rect2(88, 0, 88, 73)
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p78mt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm4gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_133vc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

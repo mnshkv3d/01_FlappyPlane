@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://catnwq57j3j2t"]
+
+[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_1olc0"]
+[ext_resource type="Texture2D" uid="uid://c80he02rmc5i5" path="res://assets/rockSnow.png" id="1_ccv4s"]
+[ext_resource type="Texture2D" uid="uid://8gh0b2ex8vhn" path="res://assets/rockIceDown.png" id="2_4mj5h"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_c6u2u"]
+a = Vector2(-52.5, -478)
+b = Vector2(12.5, -241)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6l763"]
+a = Vector2(11.5, -121)
+b = Vector2(-55.5, 116)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_uy7a1"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fguho"]
+a = Vector2(0, 135)
+b = Vector2(0, 0)
+
+[node name="Obstacle" type="Area2D" groups=["obstacle"]]
+collision_mask = 2
+script = ExtResource("1_1olc0")
+
+[node name="RockSnow" type="Sprite2D" parent="."]
+position = Vector2(847, 419)
+texture = ExtResource("1_ccv4s")
+
+[node name="RockIceDown" type="Sprite2D" parent="."]
+position = Vector2(850, 60)
+texture = ExtResource("2_4mj5h")
+
+[node name="CollisionShapeUp" type="CollisionShape2D" parent="."]
+position = Vector2(849.5, 420)
+shape = SubResource("SegmentShape2D_c6u2u")
+
+[node name="CollisionShapeLow" type="CollisionShape2D" parent="."]
+position = Vector2(849.5, 420)
+shape = SubResource("SegmentShape2D_6l763")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_uy7a1")
+
+[node name="ByPass" type="Area2D" parent="."]
+position = Vector2(874, 172)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ByPass"]
+shape = SubResource("SegmentShape2D_fguho")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ByPass" to="." method="_on_by_pass_body_entered"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjw0yojut7tui"]
+
+[ext_resource type="PackedScene" uid="uid://catnwq57j3j2t" path="res://scenes/obstacle.tscn" id="1_1ultf"]
+[ext_resource type="PackedScene" uid="uid://cpopsba0bynmm" path="res://scenes/obstacleSpawner.tscn" id="1_ijva6"]
+[ext_resource type="PackedScene" uid="uid://em7m0tdeq0dh" path="res://scenes/player.tscn" id="1_tgb47"]
+[ext_resource type="PackedScene" uid="uid://d1fe5q18y7j6b" path="res://scenes/gameManager.tscn" id="1_yw1f1"]
+[ext_resource type="PackedScene" uid="uid://ro7m5pmn32xt" path="res://scenes/parallaxBackground.tscn" id="2_6bfb8"]
+[ext_resource type="PackedScene" uid="uid://7hmykmylpyuw" path="res://scenes/killZone.tscn" id="3_3o34o"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qf4dh"]
+distance = 1.0
+
+[node name="Main" type="Node2D"]
+
+[node name="ObstacleSpawner" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("1_ijva6")]
+obstacle_scene = ExtResource("1_1ultf")
+game_manager = NodePath("../GameManager")
+
+[node name="GameManager" parent="." node_paths=PackedStringArray("parallax_background", "kill_zone", "player", "obstacle_spawner") instance=ExtResource("1_yw1f1")]
+parallax_background = NodePath("../ParallaxBackground")
+kill_zone = NodePath("../KillZone")
+player = NodePath("../Player")
+obstacle_spawner = NodePath("../ObstacleSpawner")
+
+[node name="Player" parent="." instance=ExtResource("1_tgb47")]
+position = Vector2(400, 240)
+motion_mode = 1
+
+[node name="KillZone" parent="." instance=ExtResource("3_3o34o")]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(400, 480)
+shape = SubResource("WorldBoundaryShape2D_qf4dh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(400, 0)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_qf4dh")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_6bfb8")]
