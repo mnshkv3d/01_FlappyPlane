@@ -19,6 +19,9 @@ func _ready() -> void:
 	if player:
 		pass
 	else: print("No player node specified")
+	if obstacle_spawner:
+		pass
+	else: print("No ObstacleSpawner node specified")
 
 
 func _on_game_over() -> void:
