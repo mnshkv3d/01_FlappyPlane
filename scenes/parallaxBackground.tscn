@@ -8,7 +8,7 @@
 script = ExtResource("1_gj1ax")
 
 [node name="Background" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.5, 0.5)
+motion_scale = Vector2(0.25, 0.25)
 motion_mirroring = Vector2(800, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
@@ -22,3 +22,7 @@ motion_mirroring = Vector2(808, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Ground"]
 position = Vector2(404, 445)
 texture = ExtResource("2_fa4dj")
+
+[node name="Clouds" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds"]

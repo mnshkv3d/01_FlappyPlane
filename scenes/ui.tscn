@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://di0y30v8qw0sw"]
+
+[ext_resource type="Script" path="res://scripts/container.gd" id="1_8dk8d"]
+[ext_resource type="Texture2D" uid="uid://gvonky8sdw8x" path="res://assets/textGameOver.png" id="1_bau31"]
+[ext_resource type="Texture2D" uid="uid://cowoounu11cwt" path="res://assets/textGetReady.png" id="3_4fpbc"]
+[ext_resource type="Texture2D" uid="uid://do5ttojrtcc6e" path="res://assets/tap.png" id="4_nyml6"]
+[ext_resource type="Texture2D" uid="uid://ktp64voagr2x" path="res://assets/tapTick.png" id="5_2pyue"]
+[ext_resource type="FontFile" uid="uid://p0x768138tgv" path="res://assets/digits.tres" id="6_a4oye"]
+[ext_resource type="FontFile" uid="uid://bt7g1j81ytie7" path="res://assets/letters.tres" id="6_rfhch"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxgdd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nyml6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2pyue")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8dk8d")
+
+[node name="GameOver" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.0
+offset_top = -39.0
+offset_right = 206.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bau31")
+
+[node name="GetReady" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GetReady"]
+position = Vector2(0, 120)
+sprite_frames = SubResource("SpriteFrames_uxgdd")
+autoplay = "default"
+frame_progress = 0.513312
+
+[node name="TextureRect" type="TextureRect" parent="GetReady"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -96.5
+offset_right = 200.0
+offset_bottom = -23.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4fpbc")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="ScoreContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ScoreContainer"]
+layout_mode = 1
+offset_left = 26.0
+offset_top = 15.0
+offset_right = 195.0
+offset_bottom = 38.0
+theme_override_fonts/font = ExtResource("6_rfhch")
+theme_override_font_sizes/font_size = 10
+text = "score"
+
+[node name="Score" type="Label" parent="ScoreContainer"]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 12.0
+offset_right = 268.0
+offset_bottom = 35.0
+theme_override_fonts/font = ExtResource("6_a4oye")
+theme_override_font_sizes/font_size = 10
+text = "0"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

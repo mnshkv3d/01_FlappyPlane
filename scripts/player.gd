@@ -1,14 +1,16 @@
 extends CharacterBody2D
 
 const TAP_FORCE = 50.0
+const GRAVITY_DIVIDER = 10
 var gameOver = false
+var firstTap = false
 
 @onready var animation = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not gameOver:
-		velocity += get_gravity()/10 * delta
+		velocity += get_gravity()/GRAVITY_DIVIDER * delta
 		move_and_slide()
 	
 func _on_game_over() -> void:

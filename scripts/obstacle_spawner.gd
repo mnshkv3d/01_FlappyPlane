@@ -1,5 +1,7 @@
 extends Node2D
 
+const SPAWN_TIME = 2.5
+
 @export var obstacle_scene: PackedScene
 @export var game_manager: Node
 var spawn_timer: Timer
@@ -7,7 +9,7 @@ var spawn_timer: Timer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawn_timer = Timer.new()
-	spawn_timer.wait_time = 3.0
+	spawn_timer.wait_time = SPAWN_TIME
 	spawn_timer.one_shot = false
 	spawn_timer.connect("timeout", _spawn_obstacle, 0)
 	add_child(spawn_timer)

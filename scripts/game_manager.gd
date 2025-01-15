@@ -6,6 +6,7 @@ var score = 0
 @export var kill_zone: Node
 @export var player: Node
 @export var obstacle_spawner: Node
+@export var ui: Node
 
 @onready var restart_timer = $Timer
 
@@ -22,7 +23,9 @@ func _ready() -> void:
 	if obstacle_spawner:
 		pass
 	else: print("No ObstacleSpawner node specified")
-
+	if ui:
+		pass
+	else: print ("No UI node specified")
 
 func _on_game_over() -> void:
 	if parallax_background and parallax_background.has_method("_on_game_over"):
@@ -35,11 +38,15 @@ func _on_game_over() -> void:
 	print("--- Game Over ---")
 	restart_timer.start()
 	print("Restarting...")
+	if ui and ui.has_method("_on_game_over"):
+		print("UI")
+		ui._on_game_over()
 
 func _on_obstacle_pass() -> void:
 	score += 1
-	print(score)
+	if ui.has_method("_on_score_update"):
+		ui._on_score_update(score)
+	else: print("no score")
 	
-
 func _on_timer_timeout() -> void:
 	get_tree().reload_current_scene()

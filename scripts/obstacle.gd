@@ -29,3 +29,4 @@ func _on_game_over() -> void:
 	
 func _adjust_height_pos() -> void:
 	position.y = randf_range(-60.0, 60.0)
+	position.x = randf_range(0.0, 200.0)
