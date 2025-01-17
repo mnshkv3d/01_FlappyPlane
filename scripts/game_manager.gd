@@ -28,6 +28,8 @@ func _ready() -> void:
 	else: print ("No UI node specified")
 
 func _on_game_over() -> void:
+	if GlobalScore.high_score < score:
+		GlobalScore.high_score = score
 	if parallax_background and parallax_background.has_method("_on_game_over"):
 		parallax_background._on_game_over()
 	if player and player.has_method("_on_game_over"):
@@ -41,6 +43,7 @@ func _on_game_over() -> void:
 	if ui and ui.has_method("_on_game_over"):
 		print("UI")
 		ui._on_game_over()
+	print(GlobalScore.high_score)
 
 func _on_obstacle_pass() -> void:
 	score += 1
