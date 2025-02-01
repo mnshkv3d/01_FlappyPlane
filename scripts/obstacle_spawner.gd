@@ -13,7 +13,10 @@ func _ready() -> void:
 	spawn_timer.one_shot = false
 	spawn_timer.connect("timeout", _spawn_obstacle, 0)
 	add_child(spawn_timer)
-	spawn_timer.start()
+
+func _start_spawn() -> void:
+		spawn_timer.start()
+		#print(spawn_timer.time_left)
 
 func _spawn_obstacle():
 	var obstacle_instance = obstacle_scene.instantiate()

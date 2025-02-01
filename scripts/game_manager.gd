@@ -27,6 +27,13 @@ func _ready() -> void:
 		pass
 	else: print ("No UI node specified")
 
+func _on_game_start() -> void:
+	if ui and ui.has_method("_on_game_start"):
+		ui._on_game_start()
+	if obstacle_spawner and obstacle_spawner.has_method("_start_spawn"):
+		obstacle_spawner._start_spawn()
+	#print("game started")
+	
 func _on_game_over() -> void:
 	if GlobalScore.high_score < score:
 		GlobalScore.high_score = score
@@ -35,15 +42,15 @@ func _on_game_over() -> void:
 	if player and player.has_method("_on_game_over"):
 		player._on_game_over()
 	if obstacle_spawner and obstacle_spawner.has_method("_on_game_over"):
-		print("spawner game over call")
+		#print("spawner game over call")
 		obstacle_spawner._on_game_over()
-	print("--- Game Over ---")
+	#print("--- Game Over ---")
 	restart_timer.start()
-	print("Restarting...")
+	#print("Restarting...")
 	if ui and ui.has_method("_on_game_over"):
-		print("UI")
+		#print("UI")
 		ui._on_game_over()
-	print(GlobalScore.high_score)
+	#print(GlobalScore.high_score)
 
 func _on_obstacle_pass() -> void:
 	score += 1

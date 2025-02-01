@@ -15,9 +15,14 @@ sprite_frames = ExtResource("1_8eml7")
 animation = &"idle"
 autoplay = "idle"
 frame = 2
-frame_progress = 0.614048
+frame_progress = 0.521659
 speed_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, 0)
 shape = SubResource("CircleShape2D_mpqk6")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4096.0
+one_shot = true
+autostart = true

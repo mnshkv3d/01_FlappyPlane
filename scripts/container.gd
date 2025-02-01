@@ -2,7 +2,6 @@ extends Control
 
 @onready var game_over = $GameOver
 @onready var game_start = $GetReady
-@onready var timer = $Timer
 @onready var score_label = $ScoreContainer/Score
 @onready var score_name = $ScoreContainer/Label
 @onready var highest_score = $GameOver/HighestScore
@@ -23,7 +22,7 @@ func _on_game_over() -> void:
 	game_over.show()
 	is_game_over = true
 
-func _on_timer_timeout() -> void:
+func _on_game_start() -> void:
 	game_start.hide()
 	if not is_game_over:
 		score_label.show()

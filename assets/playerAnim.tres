@@ -1,18 +1,8 @@
-[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bf63i2v3ehttf"]
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://bf63i2v3ehttf"]
 
-[ext_resource type="Texture2D" uid="uid://c2waonano4arv" path="res://assets/planes.png" id="1_0kdkn"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p78mt"]
-atlas = ExtResource("1_0kdkn")
-region = Rect2(88, 292, 88, 73)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hm4gi"]
-atlas = ExtResource("1_0kdkn")
-region = Rect2(0, 438, 88, 73)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_133vc"]
-atlas = ExtResource("1_0kdkn")
-region = Rect2(88, 0, 88, 73)
+[ext_resource type="Texture2D" uid="uid://d0dab5kldax3c" path="res://assets/planeRed1.png" id="1_im311"]
+[ext_resource type="Texture2D" uid="uid://b1brbd6ag06x4" path="res://assets/planeRed2.png" id="2_bhrl5"]
+[ext_resource type="Texture2D" uid="uid://br4pi8r6cg8u0" path="res://assets/planeRed3.png" id="3_mg8q5"]
 
 [resource]
 animations = [{
@@ -23,13 +13,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p78mt")
+"texture": ExtResource("1_im311")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hm4gi")
+"texture": ExtResource("2_bhrl5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_133vc")
+"texture": ExtResource("3_mg8q5")
 }],
 "loop": true,
 "name": &"idle",
