@@ -1,7 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://em7m0tdeq0dh"]
+[gd_scene load_steps=9 format=3 uid="uid://em7m0tdeq0dh"]
 
 [ext_resource type="SpriteFrames" uid="uid://bf63i2v3ehttf" path="res://assets/playerAnim.tres" id="1_8eml7"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_b2pxr"]
+[ext_resource type="AudioStream" uid="uid://dpsbftjga1eqe" path="res://assets/engine_sound.ogg" id="3_8hpln"]
+[ext_resource type="AudioStream" uid="uid://blmk75kgoxlgx" path="res://assets/click2.ogg" id="4_f1abe"]
+[ext_resource type="Texture2D" uid="uid://d0xmaklj4oj35" path="res://assets/puffLarge.png" id="5_6xpp6"]
+[ext_resource type="Texture2D" uid="uid://f2qhxa2ivigk" path="res://assets/puffSmall.png" id="6_qskhn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4oufo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6xpp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qskhn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mpqk6"]
 radius = 36.0555
@@ -18,6 +36,14 @@ frame = 2
 frame_progress = 0.521659
 speed_scale = 3.0
 
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+position = Vector2(-43, 10)
+rotation = 0.0482127
+scale = Vector2(0.654932, 0.654932)
+sprite_frames = SubResource("SpriteFrames_4oufo")
+autoplay = "default"
+frame_progress = 0.0758553
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, 0)
 shape = SubResource("CircleShape2D_mpqk6")
@@ -26,3 +52,12 @@ shape = SubResource("CircleShape2D_mpqk6")
 wait_time = 4096.0
 one_shot = true
 autostart = true
+
+[node name="EngineSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8hpln")
+volume_db = -30.562
+autoplay = true
+
+[node name="TapSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_f1abe")
+volume_db = -5.808

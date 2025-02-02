@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://catnwq57j3j2t"]
+[gd_scene load_steps=9 format=3 uid="uid://catnwq57j3j2t"]
 
 [ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_1olc0"]
 [ext_resource type="Texture2D" uid="uid://c80he02rmc5i5" path="res://assets/rockSnow.png" id="1_ccv4s"]
 [ext_resource type="Texture2D" uid="uid://8gh0b2ex8vhn" path="res://assets/rockIceDown.png" id="2_4mj5h"]
+[ext_resource type="AudioStream" uid="uid://bwpq8c76hnpua" path="res://assets/zap1.ogg" id="4_vxdvm"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_c6u2u"]
 a = Vector2(-52.5, -478)
@@ -47,6 +48,9 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ByPass"]
 shape = SubResource("SegmentShape2D_fguho")
+
+[node name="BypassSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vxdvm")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="ByPass" to="." method="_on_by_pass_body_entered"]

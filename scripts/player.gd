@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const TAP_FORCE = 50.0
-const GRAVITY_DIVIDER = 10
+const TAP_FORCE = 100.0
+const GRAVITY_DIVIDER = 5
 const MAX_ROTATION = 25
 const ROTATION_SPEED = 10
 
@@ -9,8 +9,11 @@ var gameOver = false
 var firstTap = false
 
 @onready var animation = $AnimatedSprite2D
+@onready var animation2 = $AnimatedSprite2D/AnimatedSprite2D2
 @onready var timer = $Timer
 @onready var game_manager = $/root/Main/GameManager
+@onready var engine_sound = $EngineSound
+@onready var tap_sound = $TapSound
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -34,10 +37,14 @@ func update_rotation(delta: float) -> void:
 func _on_game_over() -> void:
 	gameOver = true
 	animation.pause()
+	animation2.pause()
+	engine_sound.stop()
 	
 func _tap() -> void:
 	velocity.y -= TAP_FORCE
-	update_rotation(0.01)
+	if not gameOver:
+		update_rotation(0.01)
+		tap_sound.play()
 	if not timer.is_stopped():
 		timer.stop()
 		if game_manager and game_manager.has_method("_on_game_start"):

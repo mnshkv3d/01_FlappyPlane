@@ -9,6 +9,8 @@ var score = 0
 @export var ui: Node
 
 @onready var restart_timer = $Timer
+@onready var music = $Music
+@onready var hit_sound = $HitSound
 
 func _ready() -> void:
 	if kill_zone:
@@ -33,6 +35,11 @@ func _on_game_start() -> void:
 	if obstacle_spawner and obstacle_spawner.has_method("_start_spawn"):
 		obstacle_spawner._start_spawn()
 	#print("game started")
+	music.play()
+	for i in range(-50.0, -11.45, 3.0):
+		music.volume_db = i
+		await get_tree().create_timer(0.1).timeout
+		#print(i)
 	
 func _on_game_over() -> void:
 	if GlobalScore.high_score < score:
@@ -45,6 +52,8 @@ func _on_game_over() -> void:
 		#print("spawner game over call")
 		obstacle_spawner._on_game_over()
 	#print("--- Game Over ---")
+	hit_sound.play()
+	music.stop()
 	restart_timer.start()
 	#print("Restarting...")
 	if ui and ui.has_method("_on_game_over"):

@@ -1,11 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1fe5q18y7j6b"]
+[gd_scene load_steps=4 format=3 uid="uid://d1fe5q18y7j6b"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_w7uco"]
+[ext_resource type="AudioStream" uid="uid://byy6cwd8omq6p" path="res://assets/Retro Polka.ogg" id="2_cik7k"]
+[ext_resource type="AudioStream" uid="uid://b54wyaims1c0g" path="res://assets/hit1.ogg" id="3_gex44"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_w7uco")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.5
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cik7k")
+volume_db = -50.0
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gex44")
+volume_db = -11.45
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
